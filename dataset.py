@@ -39,37 +39,6 @@ def get_model(model_path, epoch):
     return generator_A, generator_B, discriminator_A, discriminator_B
 
 
-def get_real_image(image_size=64, input_path="", test=False, test_size=200): # path 불러오기
-    images = []
-
-    file_list = os.listdir(input_path)
-
-    for file in file_list:
-        if file.endswith(".jpg") or file.endswith(".png"):
-            file_path = os.path.join(input_path, file)
-
-            image = cv2.imread(file_path)  # fn이 한글 경로가 포함되어 있으면 제대로 읽지 못함. binary로 바꿔서 처리하는 방법있음
-
-            if image is None:
-                print("None")
-                continue
-            # image를 image_size(default=64)로 변환
-            image = cv2.resize(image, (image_size, image_size))
-            image = image.astype(np.float32) / 255.
-            image = image.transpose(2, 0, 1)
-            images.append(image)
-
-    if images:
-        print("push the stack")
-        images = np.stack(images)
-    else:
-        print("error, images is emtpy")
-
-    if test == True:
-        return images[:test_size]
-    else:
-        return images[test_size:]
-
 def get_real_image(image_size=64, input_path="", test_size=200): # path 불러오기
     images = []
 
