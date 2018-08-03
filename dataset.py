@@ -4,6 +4,8 @@ import numpy as np
 from scipy import misc
 from model import *
 import torch
+from option import Option
+
 
 def get_model(model_path, epoch):
     file_names = ['model_gen_A', 'model_gen_B', 'model_dis_A', 'model_dis_B']
@@ -39,6 +41,7 @@ def get_model(model_path, epoch):
     return generator_A, generator_B, discriminator_A, discriminator_B
 
 
+
 def get_real_image(image_size=64, input_path="", test_size=200): # path 불러오기
     images = []
 
@@ -66,6 +69,37 @@ def get_real_image(image_size=64, input_path="", test_size=200): # path 불러�
         print("error, images is emtpy")
 
     return images[:test_size], images[test_size:]
+
+
+
+def save_image_model(args, n_iter, generator_A, generator_B, discriminator_A, discriminator_B, test_A, test_B):
+
+    print("start to save image and model[", n_iter, "]")
+
+    save_path = os.path.join(args.result_path, str(n_iter))
+
+    if not os.path.isdir(save_path):
+        os.mkdir(save_path)
+
+    for i in range(0, args.test_size):
+        AB = generator_B(test_A)
+        BA = generator_A(test_B)
+        ABA = generator_A(AB)
+        BAB = generator_B(BA)
+
+        save_image(str(i) + "_A", test_A[i], save_path)
+        save_image(str(i) + "_B", test_B[i], save_path)
+        save_image(str(i) + "_AB", AB[i], save_path)
+        save_image(str(i) + "_BA", BA[i], save_path)
+        save_image(str(i) + "_ABA", ABA[i], save_path)
+        save_image(str(i) + "_BAB", BAB[i], save_path)
+
+    torch.save(generator_A, os.path.join(args.model_path, 'model_gen_A-' + str(n_iter)))
+    torch.save(generator_B, os.path.join(args.model_path, 'model_gen_B-' + str(n_iter)))
+    torch.save(discriminator_A, os.path.join(args.model_path, 'model_dis_A-' + str(n_iter)))
+    torch.save(discriminator_B, os.path.join(args.model_path, 'model_dis_B-' + str(n_iter)))
+
+    print("complete to save image and model")
 
 
 def save_image(name, image, result_path):
