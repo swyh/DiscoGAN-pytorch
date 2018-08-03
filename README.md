@@ -1,4 +1,5 @@
 # DiscoGAN_pytorch
+I brought the model, loss code of the official DiscoGAN.
 
 Official paper : [https://arxiv.org/pdf/1703.05192.pdf](https://arxiv.org/pdf/1703.05192.pdf) <br>
 Official implement : [https://github.com/SKTBrain/DiscoGAN](https://github.com/SKTBrain/DiscoGAN)
@@ -13,10 +14,22 @@ Official implement : [https://github.com/SKTBrain/DiscoGAN](https://github.com/S
 ## Execution
 
 ### Dataset Download
-기존 DiscoGAN github 참조
+see Official DiscoGAN github
 
+### Training
+- dataset directory
+  ```
+      - Test
+        - A
+        - B
+  ```
+- train
+
+    $ python train.py
+    
+    
 ### Road Model
-
+you should set to load epoch, model_path (defualt epoch : -0, model_path : ./models)
     
-    $ python ./discogan/image_translation.py --load_epoch -4 --model_path ./models
-    
+    $ python train.py --load_epoch -4 --model_path ./models
+ 
