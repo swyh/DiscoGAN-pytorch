@@ -1,4 +1,4 @@
-# DiscoGAN_pyrotch
+# DiscoGAN_pytorch
 
 Official paper : [https://arxiv.org/pdf/1703.05192.pdf](https://arxiv.org/pdf/1703.05192.pdf) <br>
 Official implement : [https://github.com/SKTBrain/DiscoGAN](https://github.com/SKTBrain/DiscoGAN)
