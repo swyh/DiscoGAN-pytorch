@@ -26,7 +26,7 @@ see Official DiscoGAN github
   ```
 - train
 
-    $ python train.py
+       $ python train.py
     
     
 #### Road Model
@@ -45,6 +45,7 @@ you should set to load epoch, model_path (defualt epoch : -0, model_path : ./mod
   ```
 - test
 
-    $ python test.py
+
+      $ python test.py
     
     
