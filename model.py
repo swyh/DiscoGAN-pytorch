@@ -1,7 +1,6 @@
 import torch
 import torch.nn as nn
 
-
 kernel_sizes = [4,3,3]
 strides = [2,2,1]
 paddings=[0,0,1]

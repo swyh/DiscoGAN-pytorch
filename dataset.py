@@ -4,8 +4,6 @@ import numpy as np
 from scipy import misc
 from model import *
 import torch
-from option import Option
-
 
 def get_model(model_path, epoch):
     file_names = ['model_gen_A', 'model_gen_B', 'model_dis_A', 'model_dis_B']
@@ -42,11 +40,7 @@ def get_model(model_path, epoch):
 
 
 
-<<<<<<< HEAD
 def get_real_image(image_size=64, input_path="", test_size=0): # path 불러오기
-=======
-def get_real_image(image_size=64, input_path="", test_size=200): # path 불러오기
->>>>>>> 0647a1463b3a332a0ee018011df5aad6a57a0dc8
     images = []
 
     file_list = os.listdir(input_path)
@@ -76,20 +70,11 @@ def get_real_image(image_size=64, input_path="", test_size=200): # path 불러�
 
 
 
-<<<<<<< HEAD
 def save_all_image(save_path, test_size, generator_A, generator_B, A, B):
-=======
-def save_image_model(args, n_iter, generator_A, generator_B, discriminator_A, discriminator_B, test_A, test_B):
-
-    print("start to save image and model[", n_iter, "]")
-
-    save_path = os.path.join(args.result_path, str(n_iter))
->>>>>>> 0647a1463b3a332a0ee018011df5aad6a57a0dc8
 
     if not os.path.isdir(save_path):
         os.mkdir(save_path)
 
-<<<<<<< HEAD
     for i in range(0, test_size):
         AB = generator_B(A)
         BA = generator_A(B)
@@ -98,22 +83,11 @@ def save_image_model(args, n_iter, generator_A, generator_B, discriminator_A, di
 
         save_image(str(i) + "_A", A[i], save_path)
         save_image(str(i) + "_B", B[i], save_path)
-=======
-    for i in range(0, args.test_size):
-        AB = generator_B(test_A)
-        BA = generator_A(test_B)
-        ABA = generator_A(AB)
-        BAB = generator_B(BA)
-
-        save_image(str(i) + "_A", test_A[i], save_path)
-        save_image(str(i) + "_B", test_B[i], save_path)
->>>>>>> 0647a1463b3a332a0ee018011df5aad6a57a0dc8
         save_image(str(i) + "_AB", AB[i], save_path)
         save_image(str(i) + "_BA", BA[i], save_path)
         save_image(str(i) + "_ABA", ABA[i], save_path)
         save_image(str(i) + "_BAB", BAB[i], save_path)
 
-<<<<<<< HEAD
     print("complete to save image")
 
 
@@ -123,14 +97,6 @@ def save_model(model_path, n_iter, generator_A, generator_B, discriminator_A, di
     torch.save(discriminator_A, os.path.join(model_path, 'model_dis_A-' + str(n_iter)))
     torch.save(discriminator_B, os.path.join(model_path, 'model_dis_B-' + str(n_iter)))
     print("complete to save model")
-=======
-    torch.save(generator_A, os.path.join(args.model_path, 'model_gen_A-' + str(n_iter)))
-    torch.save(generator_B, os.path.join(args.model_path, 'model_gen_B-' + str(n_iter)))
-    torch.save(discriminator_A, os.path.join(args.model_path, 'model_dis_A-' + str(n_iter)))
-    torch.save(discriminator_B, os.path.join(args.model_path, 'model_dis_B-' + str(n_iter)))
-
-    print("complete to save image and model")
->>>>>>> 0647a1463b3a332a0ee018011df5aad6a57a0dc8
 
 
 def save_image(name, image, result_path):

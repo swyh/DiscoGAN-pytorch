@@ -1,30 +1,13 @@
-<<<<<<< HEAD
 from itertools import chain
 import random
 from dataset import *
 from option import TrainOption
 from loss import *
 
-
 def main():
     global args
     args = TrainOption().parse()
     print(args.result_path)
-=======
-
-from itertools import chain
-import random
-from dataset import *
-from option import Option
-from loss import *
-
-
-
-def main():
-    global args
-    args = Option().parse()
-
->>>>>>> 0647a1463b3a332a0ee018011df5aad6a57a0dc8
     if not os.path.isdir(args.result_path):
         os.mkdir(args.result_path)
     if not os.path.isdir(args.model_path):
@@ -124,20 +107,12 @@ def main():
 
             #save validation set
             if iter % args.save_iter == 0:
-<<<<<<< HEAD
                 n_iter = iter // args.save_iter
                 print("start to save image and model[", n_iter, "]")
                 save_path = os.path.join(args.result_path, str(n_iter))
 
                 save_all_image(save_path, args.test_size, generator_A, generator_B, test_A, test_B)
                 save_model(args.model_path, n_iter, generator_A, generator_B, discriminator_A, discriminator_B)
-=======
-                save_image_model(args, iter // args.save_iter, generator_A, generator_B, discriminator_A, discriminator_B, test_A, test_B)
-                #t = threading.Thread\
-                #    (target=save_image_model,
-                #     args=(args, iter // args.save_iter, generator_A, generator_B, discriminator_A, discriminator_B, test_A, test_B))
-                #t.start()
->>>>>>> 0647a1463b3a332a0ee018011df5aad6a57a0dc8
 
             iter = iter + 1
 

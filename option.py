@@ -1,26 +1,14 @@
 import argparse
 
-<<<<<<< HEAD
 class TrainOption():
-=======
-class Option():
->>>>>>> 0647a1463b3a332a0ee018011df5aad6a57a0dc8
 
     def __init__(self):
         parser = argparse.ArgumentParser(description='PyTorch implementation of DiscoGAN')
 
-<<<<<<< HEAD
         parser.add_argument('--load_epoch', type=str, default='-0', help='Set load epoch')
         parser.add_argument('--model_path', type=str, default='./models/', help='Set generated model path')
         parser.add_argument('--result_path', type=str, default='./train_result/', help='Set the result images path')
         parser.add_argument('--input_path', type=str, default='./train/', help='Set the input images path')
-=======
-        parser.add_argument('--load_epoch', type=str, default='-1', help='Set load epoch')
-        parser.add_argument('--model_path', type=str, default='./models/', help='Set generated model path')
-        parser.add_argument('--result_path', type=str, default='./result/', help='Set the result images path')
-        parser.add_argument('--input_path', type=str, default='./test/', help='Set the input images path')
->>>>>>> 0647a1463b3a332a0ee018011df5aad6a57a0dc8
-
 
         parser.add_argument('--epoch', type=int, default=5000, help='Set epoch')
         parser.add_argument('--image_size', type=int, default=64, help='Set image size')
@@ -35,7 +23,6 @@ class Option():
 
     def parse(self):
         return self.parser.parse_args()
-<<<<<<< HEAD
 
 
 class TestOption():
@@ -55,5 +42,3 @@ class TestOption():
 
     def parse(self):
         return self.parser.parse_args()
-=======
->>>>>>> 0647a1463b3a332a0ee018011df5aad6a57a0dc8
