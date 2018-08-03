@@ -1,4 +1,4 @@
-# DiscoGAN_pytorch
+# DiscoGAN-pytorch
 I brought the model, loss code of the official DiscoGAN.
 
 Official paper : [https://arxiv.org/pdf/1703.05192.pdf](https://arxiv.org/pdf/1703.05192.pdf) <br>
@@ -19,9 +19,10 @@ see Official DiscoGAN github
 ### Training
 - dataset directory
   ```
-      - Test
-        - A
-        - B
+  - DiscoGAN-pytorch
+   - Test
+    - A
+    - B
   ```
 - train
 
