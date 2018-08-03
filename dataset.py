@@ -23,7 +23,7 @@ def get_model(model_path, epoch):
 
         print("success to load models")
     except Exception as e:
-        print(e)
+        print("not found your model")
         print("So, create new model")
         generator_A = Generator()
         generator_B = Generator()
@@ -39,7 +39,8 @@ def get_model(model_path, epoch):
     return generator_A, generator_B, discriminator_A, discriminator_B
 
 
-def get_real_image(image_size=64, input_path="", test_size=200): # path 불러오기
+
+def get_real_image(image_size=64, input_path="", test_size=0): # path 불러오기
     images = []
 
     file_list = os.listdir(input_path)
@@ -66,6 +67,36 @@ def get_real_image(image_size=64, input_path="", test_size=200): # path 불러�
         print("error, images is emtpy")
 
     return images[:test_size], images[test_size:]
+
+
+
+def save_all_image(save_path, test_size, generator_A, generator_B, A, B):
+
+    if not os.path.isdir(save_path):
+        os.mkdir(save_path)
+
+    for i in range(0, test_size):
+        AB = generator_B(A)
+        BA = generator_A(B)
+        ABA = generator_A(AB)
+        BAB = generator_B(BA)
+
+        save_image(str(i) + "_A", A[i], save_path)
+        save_image(str(i) + "_B", B[i], save_path)
+        save_image(str(i) + "_AB", AB[i], save_path)
+        save_image(str(i) + "_BA", BA[i], save_path)
+        save_image(str(i) + "_ABA", ABA[i], save_path)
+        save_image(str(i) + "_BAB", BAB[i], save_path)
+
+    print("complete to save image")
+
+
+def save_model(model_path, n_iter, generator_A, generator_B, discriminator_A, discriminator_B):
+    torch.save(generator_A, os.path.join(model_path, 'model_gen_A-' + str(n_iter)))
+    torch.save(generator_B, os.path.join(model_path, 'model_gen_B-' + str(n_iter)))
+    torch.save(discriminator_A, os.path.join(model_path, 'model_dis_A-' + str(n_iter)))
+    torch.save(discriminator_B, os.path.join(model_path, 'model_dis_B-' + str(n_iter)))
+    print("complete to save model")
 
 
 def save_image(name, image, result_path):
