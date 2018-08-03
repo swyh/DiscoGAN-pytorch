@@ -14,3 +14,9 @@ Official implement : [https://github.com/SKTBrain/DiscoGAN](https://github.com/S
 
 ### Dataset Download
 기존 DiscoGAN github 참조
+
+### Road Model
+
+    
+    $ python ./discogan/image_translation.py --load_epoch -4 --model_path ./models
+    
