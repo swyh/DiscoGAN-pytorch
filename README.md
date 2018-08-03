@@ -20,7 +20,7 @@ see Official DiscoGAN github
 - dataset directory
   ```
   - DiscoGAN-pytorch
-   - Test
+   - train
     - A
     - B
   ```
@@ -29,8 +29,22 @@ see Official DiscoGAN github
     $ python train.py
     
     
-### Road Model
+#### Road Model
 you should set to load epoch, model_path (defualt epoch : -0, model_path : ./models)
     
     $ python train.py --load_epoch -4 --model_path ./models
  
+ 
+### Test
+- dataset directory
+  ```
+  - DiscoGAN-pytorch
+   - test
+    - A
+    - B
+  ```
+- test
+
+    $ python test.py
+    
+    
