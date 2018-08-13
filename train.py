@@ -56,8 +56,8 @@ def main():
         discriminator_B.zero_grad()
 
         for i in range(n_batchs):
-            A = train_A[n_batchs * i:n_batchs * (i + 1)]
-            B = train_B[n_batchs * i:n_batchs * (i + 1)]
+            A = train_A[args.batch_size * i:args.batch_size * (i + 1)]
+            B = train_B[args.batch_size * i:args.batch_size * (i + 1)]
 
             A = Variable(torch.FloatTensor(A))
             B = Variable(torch.FloatTensor(B))
