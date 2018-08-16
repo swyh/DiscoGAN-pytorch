@@ -70,23 +70,25 @@ def get_real_image(image_size=64, input_path="", test_size=0): # path 불러오�
 
 
 
-def save_all_image(save_path, test_size, generator_A, generator_B, A, B):
+def save_all_image(save_path, test_size, generator_A, generator_B, test_A, test_B):
 
     if not os.path.isdir(save_path):
         os.mkdir(save_path)
 
     for i in range(0, test_size):
+        A = test_A[i:i+1]
+        B = test_B[i:i+1]
         AB = generator_B(A)
         BA = generator_A(B)
         ABA = generator_A(AB)
         BAB = generator_B(BA)
 
-        save_image(str(i) + "_A", A[i], save_path)
-        save_image(str(i) + "_B", B[i], save_path)
-        save_image(str(i) + "_AB", AB[i], save_path)
-        save_image(str(i) + "_BA", BA[i], save_path)
-        save_image(str(i) + "_ABA", ABA[i], save_path)
-        save_image(str(i) + "_BAB", BAB[i], save_path)
+        save_image(str(i) + "_A", A[0], save_path)
+        save_image(str(i) + "_B", B[0], save_path)
+        save_image(str(i) + "_AB", AB[0], save_path)
+        save_image(str(i) + "_BA", BA[0], save_path)
+        save_image(str(i) + "_ABA", ABA[0], save_path)
+        save_image(str(i) + "_BAB", BAB[0], save_path)
 
     print("complete to save image")
 
